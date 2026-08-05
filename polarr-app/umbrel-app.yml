@@ -1,9 +1,11 @@
 manifestVersion: 1
-id: polarr
+id: polarr-app
 category: media
 name: Polarr
 version: "0.1.0"
 tagline: Discover, request, and stream your homeserver music
+icon: https://raw.githubusercontent.com/KevinGuest/polarr-app/main/polarr-app/icon.png
+port: 3647
 description: >-
   Polarr is a self-hosted music hub for umbrelOS. Point it at Lidarr (the same
   way Seerr connects to Sonarr and Radarr), request missing albums, fill gaps
@@ -32,20 +34,21 @@ description: >-
 
   Polarr does not ship Lidarr itself; install Lidarr from the Umbrel App Store
   first if you want automated *arr-style acquisition.
-releaseNotes: ""
-developer: Polarr
-website: https://github.com/KevinGuest/polarr
-dependencies:
-  - lidarr
+releaseNotes: >-
+  Initial Umbrel community package. Stream library + Downtify fallback
+  acquisitions. Image ghcr.io/kevinguest/polarr-app:0.1.0.
+developer: Kevin Guest
+website: https://github.com/KevinGuest/polarr-app
+submitter: KevinGuest
+submission: https://github.com/KevinGuest/polarr-app
 repo: https://github.com/KevinGuest/polarr
 support: https://github.com/KevinGuest/polarr/issues
-port: 3647
 gallery: []
+dependencies:
+  - lidarr
 path: ""
 defaultUsername: ""
 defaultPassword: ""
 torOnly: false
 permissions:
   - STORAGE_DOWNLOADS
-submitter: merks
-submission: ""

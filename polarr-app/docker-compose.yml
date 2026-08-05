@@ -3,21 +3,27 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      APP_HOST: polarr_web_1
+      # Umbrel names containers: <app-id>_<service>_1
+      APP_HOST: polarr-app_web_1
       APP_PORT: 3000
+      # API used by browser UI, iOS companion, and range streaming.
       PROXY_AUTH_WHITELIST: "/api/*"
 
   web:
-    image: ghcr.io/kevinguest/polarr-app:0.1.0
+    # Pin tag + multi-arch index digest. Bump both on release (see README).
+    image: ghcr.io/kevinguest/polarr-app:0.1.0@sha256:9337bfb62197e0ea6024a04382a5cc1801a19aa0564c447cc2b085fab16b2663
     user: "1000:1000"
     init: true
     restart: on-failure
+    stop_grace_period: 30s
     environment:
       - POLARR_DATA_DIR=/data
       - POLARR_MUSIC_DIR=/music
       - POLARR_DOWNLOADS_DIR=/music/downloads
       - PORT=3000
       - HOSTNAME=0.0.0.0
+      # Package version — keep in sync with umbrel-app.yml
+      - POLARR_APP_VERSION=0.1.0
     volumes:
       - ${APP_DATA_DIR}/data:/data
       - ${UMBREL_ROOT}/data/storage/downloads/music:/music

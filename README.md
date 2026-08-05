@@ -1,32 +1,47 @@
-# polarr-app
+# Polarr
 
-Docker / Umbrel release packaging for [Polarr](https://github.com/KevinGuest/polarr).
+Self-hosted music discovery, Lidarr requests, and streaming for [Umbrel](https://umbrel.com).
 
-## Image
+Source: [`polarr`](https://github.com/KevinGuest/polarr) · Image: `ghcr.io/kevinguest/polarr-app`
 
-Built from the Polarr source repo and published to GHCR:
+## Install
+
+1. Install the **Lidarr** app on umbrelOS (required dependency).
+2. App Store → Community App Stores → add:
 
 ```
-ghcr.io/kevinguest/polarr-app:latest
-ghcr.io/kevinguest/polarr-app:0.1.0
+https://github.com/KevinGuest/polarr-app
 ```
 
-Workflow: push to `main` (or `workflow_dispatch`) → multi-arch build from `KevinGuest/polarr` → push GHCR.
+3. Install **Polarr**.
 
-## Run
+Open Polarr from the homescreen and finish first-run setup (admin account + Lidarr URL/API key).
 
-```bash
-docker run --rm -p 3647:3000 \
-  -v polarr-data:/data -v polarr-music:/music \
-  ghcr.io/kevinguest/polarr-app:latest
-```
+| Port | Service |
+| --- | --- |
+| **3647** | Web UI / API |
 
-## Umbrel
+Music mounts under Umbrel Downloads storage: `data/storage/downloads/music`.
 
-Draft package: `umbrel-package/polarr/`
+## What’s included
 
-Pin the published digest before store submission.
+- Discover + request flow (Lidarr)
+- Optional Downtify-style fallback (yt-dlp + ffmpeg in the image)
+- Browser streaming and iOS companion contract (`/api/stream/:id`)
+- SQLite settings / library / requests store
 
-## License note
+## Version bump checklist
 
-Same as Polarr — self-hosted library tooling; respect copyright laws for acquired content.
+When shipping a new Umbrel package release, update **all** of:
+
+1. `polarr-app/umbrel-app.yml` → `version` + `releaseNotes`
+2. `polarr-app/docker-compose.yml` → `POLARR_APP_VERSION` (must match manifest `version`)
+3. `polarr-app/docker-compose.yml` → `web` image **tag and `@sha256:` digest**
+   - Resolve digest: `docker buildx imagetools inspect ghcr.io/kevinguest/polarr-app:<tag>`
+4. Publish the image from this repo’s `Docker image` workflow (builds source from `KevinGuest/polarr`)
+
+## Dev notes
+
+- App package lives in `polarr-app/` (Umbrel community store layout).
+- Store root: `umbrel-app-store.yml`
+- GHCR workflow: `.github/workflows/docker.yml`
