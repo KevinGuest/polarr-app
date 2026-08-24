@@ -21,7 +21,7 @@ Open Polarr from the homescreen and finish first-run setup (admin account + Lida
 | --- | --- |
 | **3647** | Web UI / API |
 
-Music and fallback downloads share Umbrel Downloads storage: `data/storage/downloads/complete/music` (Lidarr’s `/downloads/complete/music`).
+Lidarr downloads to `/downloads/music` which is host `${UMBREL_ROOT}/data/storage/downloads/music`. Polarr mounts that at `/music` and writes there too.
 
 ## What’s included
 
