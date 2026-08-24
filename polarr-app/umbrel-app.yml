@@ -2,7 +2,7 @@ manifestVersion: 1
 id: polarr-app
 category: media
 name: Polarr
-version: "0.6.1"
+version: "0.6.2"
 tagline: Discover, request, and stream your homeserver music
 icon: https://raw.githubusercontent.com/KevinGuest/polarr-app/main/polarr-app/icon.png
 port: 3647
@@ -35,10 +35,8 @@ description: >-
   Polarr does not ship Lidarr itself; install Lidarr from the Umbrel App Store
   first if you want automated *arr-style acquisition.
 releaseNotes: >-
-  Lidarr downloads to /downloads/music which is host
-  ${UMBREL_ROOT}/data/storage/downloads/music. Polarr mounts that at /music
-  and writes yt-dlp / save-on-play files there too, instead of a separate
-  app-data downloads silo.
+  Your Library sidebar lists albums you save, not every Lidarr scan.
+  The player source badge now says Polarr instead of Local.
 developer: Kevin Guest
 website: https://github.com/KevinGuest/polarr-app
 submitter: KevinGuest
