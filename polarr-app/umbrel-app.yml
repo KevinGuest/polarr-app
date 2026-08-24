@@ -2,7 +2,7 @@ manifestVersion: 1
 id: polarr-app
 category: media
 name: Polarr
-version: "0.5.0"
+version: "0.5.1"
 tagline: Discover, request, and stream your homeserver music
 icon: https://raw.githubusercontent.com/KevinGuest/polarr-app/main/polarr-app/icon.png
 port: 3647
@@ -35,9 +35,7 @@ description: >-
   Polarr does not ship Lidarr itself; install Lidarr from the Umbrel App Store
   first if you want automated *arr-style acquisition.
 releaseNotes: >-
-  New app logo and favicon, download quality presets (lossless to compact),
-  per-user Downloaded badges, karaoke recovery fixes, floating listener
-  avatars, and admin panel cleanup.
+  Disable Umbrel's extra proxy authentication so Polarr's own login works.
 developer: Kevin Guest
 website: https://github.com/KevinGuest/polarr-app
 submitter: KevinGuest
