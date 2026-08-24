@@ -2,7 +2,7 @@ manifestVersion: 1
 id: polarr-app
 category: media
 name: Polarr
-version: "0.6.3"
+version: "0.6.4"
 tagline: Discover, request, and stream your homeserver music
 icon: https://raw.githubusercontent.com/KevinGuest/polarr-app/main/polarr-app/icon.png
 port: 3647
@@ -35,9 +35,11 @@ description: >-
   Polarr does not ship Lidarr itself; install Lidarr from the Umbrel App Store
   first if you want automated *arr-style acquisition.
 releaseNotes: >-
-  Confirms use in-app dialogs instead of browser alerts.
-  Removing from Your Library no longer deletes files on disk.
-  Admins and the Server Owner can delete files from Admin → Tracks / Albums.
+  Track rows show a Polarr badge when the file is on disk; Liked and Library drop the Source column.
+  Liked Songs show album covers and play the library file.
+  Now playing cards dedupe the same track across users.
+  Search ranks your downloads first, plays the file, and paints library results before catalog.
+  Karaoke uses on-disk library, Lidarr, and download files; the vocal mixer only runs when a file is actually playing.
 developer: Kevin Guest
 website: https://github.com/KevinGuest/polarr-app
 submitter: KevinGuest
