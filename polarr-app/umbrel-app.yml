@@ -2,7 +2,7 @@ manifestVersion: 1
 id: polarr-app
 category: media
 name: Polarr
-version: "0.6.21"
+version: "0.6.22"
 tagline: Discover, request, and stream your homeserver music
 icon: https://raw.githubusercontent.com/KevinGuest/polarr-app/main/polarr-app/icon.png
 port: 3647
@@ -35,10 +35,8 @@ description: >-
   Polarr does not ship Lidarr itself; install Lidarr from the Umbrel App Store
   first if you want automated *arr-style acquisition.
 releaseNotes: |-
-  - **Desktop compatibility** — checks server support before opening Polarr
-  - **Discord connection** — requests permission to update Rich Presence
-  - **Login alerts** — shows Polarr for Windows/macOS/Linux instead of the embedded browser
-  - **Rich Presence** — artist-only activity line; album name appears on cover hover
+  - **Discord linking** — restores account linking after the OAuth permission change
+  - **Playback devices** — clearly identifies Polarr desktop playback and web playback
 developer: Kevin Guest
 website: https://github.com/KevinGuest/polarr-app
 submitter: KevinGuest
