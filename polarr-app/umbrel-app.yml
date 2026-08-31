@@ -2,7 +2,7 @@ manifestVersion: 1
 id: polarr-app
 category: media
 name: Polarr
-version: "0.6.23"
+version: "0.6.24"
 tagline: Discover, request, and stream your homeserver music
 icon: https://raw.githubusercontent.com/KevinGuest/polarr-app/main/polarr-app/icon.png
 port: 3647
@@ -35,8 +35,10 @@ description: >-
   Polarr does not ship Lidarr itself; install Lidarr from the Umbrel App Store
   first if you want automated *arr-style acquisition.
 releaseNotes: |-
-  - **macOS desktop header** — places the Polarr logo beside search and keeps it clear of the window buttons
-  - **Desktop connections** — improves the connected layout for the Polarr desktop app
+  - **Player restore** — keeps your last track visible after reopening Polarr
+  - **Queue panel** — show or hide Queue and Recently Played from the player bar
+  - **Desktop header** — aligns the logo, Home button, search, and macOS window buttons
+  - **Listening activity** — shows fresher tracks and recent listeners on Home
 developer: Kevin Guest
 website: https://github.com/KevinGuest/polarr-app
 submitter: KevinGuest
