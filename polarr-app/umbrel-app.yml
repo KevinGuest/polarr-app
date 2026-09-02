@@ -2,7 +2,7 @@ manifestVersion: 1
 id: polarr-app
 category: media
 name: Polarr
-version: "0.6.29"
+version: "0.6.30"
 tagline: Discover, request, and stream your homeserver music
 icon: https://raw.githubusercontent.com/KevinGuest/polarr-app/main/polarr-app/icon.png
 port: 3647
@@ -35,12 +35,11 @@ description: >-
   Polarr does not ship Lidarr itself; install Lidarr from the Umbrel App Store
   first if you want automated *arr-style acquisition.
 releaseNotes: |-
-  - **Crossfade** — blends consecutive tracks with a smooth equal-power transition
-  - **Gapless playback** — buffers the next track and keeps playback active between songs
-  - **Audio output** — routes equalizer audio to the selected device when supported
-  - **System output fallback** — clearly explains when macOS or Windows manages the output
-  - **Desktop loading** — removes the old web-header flash when opening desktop pages
-  - **Playback controls** — clearer device messages and accessible audio switches
+  - **Desktop downloads** — offers the right macOS or Windows installer for your computer
+  - **Requests activity** — scanned tracks appear in Downloaded; missing files have their own filter
+  - **Artist pages** — Albums, Singles, and Appears On sections across desktop and mobile
+  - **Playback settings** — equalizer points can be clicked or dragged
+  - **Server info** — shows server and app versions separately
 developer: Kevin Guest
 website: https://github.com/KevinGuest/polarr-app
 submitter: KevinGuest
