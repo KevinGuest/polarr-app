@@ -2,7 +2,7 @@ manifestVersion: 1
 id: polarr-app
 category: media
 name: Polarr
-version: "0.6.30"
+version: "0.6.31"
 tagline: Discover, request, and stream your homeserver music
 icon: https://raw.githubusercontent.com/KevinGuest/polarr-app/main/polarr-app/icon.png
 port: 3647
@@ -35,11 +35,11 @@ description: >-
   Polarr does not ship Lidarr itself; install Lidarr from the Umbrel App Store
   first if you want automated *arr-style acquisition.
 releaseNotes: |-
-  - **Desktop downloads** — offers the right macOS or Windows installer for your computer
-  - **Requests activity** — scanned tracks appear in Downloaded; missing files have their own filter
-  - **Artist pages** — Albums, Singles, and Appears On sections across desktop and mobile
-  - **Playback settings** — equalizer points can be clicked or dragged
-  - **Server info** — shows server and app versions separately
+  - **iOS TestFlight** — Downloads page links to the beta build for iPhone and iPad
+  - **Native login alerts** — Discord/admin show Polarr for iPhone or iPad
+  - **iOS companion** — CapacitorHttp sign-in, offline downloads, and media-ticket playback
+  - **Mobile chrome** — iPhone no longer opens the desktop layout by mistake
+  - **Avatars and covers** — native apps load authenticated artwork more reliably
 developer: Kevin Guest
 website: https://github.com/KevinGuest/polarr-app
 submitter: KevinGuest
