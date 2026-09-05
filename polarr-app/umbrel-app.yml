@@ -2,7 +2,7 @@ manifestVersion: 1
 id: polarr-app
 category: media
 name: Polarr
-version: "0.6.34"
+version: "0.6.35"
 tagline: Discover, request, and stream your homeserver music
 icon: https://raw.githubusercontent.com/KevinGuest/polarr-app/main/polarr-app/icon.png
 port: 3647
@@ -35,11 +35,11 @@ description: >-
   Polarr does not ship Lidarr itself; install Lidarr from the Umbrel App Store
   first if you want automated *arr-style acquisition.
 releaseNotes: |-
+  - **Profile flicker** — avatar and banner stay stable across mediaTicket refreshes
   - **iOS seek** — FLAC/compat streams encode to seekable M4A (scrubber works)
   - **iOS volume** — slider follows system / Control Center volume
   - **No random restarts** — mediaTicket refresh restamps without reminting the track
   - **Faster resume** — last track primes with a ticket; play tap skips reload when ready
-  - **Faster library** — artist pages use cache-first native loads
 developer: Kevin Guest
 website: https://github.com/KevinGuest/polarr-app
 submitter: KevinGuest
