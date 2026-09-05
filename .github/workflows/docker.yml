@@ -54,7 +54,7 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=sha,prefix=sha-
             type=raw,value=latest,enable={{is_default_branch}}
-            type=raw,value=0.6.32,enable={{is_default_branch}}
+            type=raw,value=0.6.33,enable={{is_default_branch}}
 
       - name: Build and push
         uses: docker/build-push-action@v6
