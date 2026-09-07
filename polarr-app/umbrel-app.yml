@@ -2,7 +2,7 @@ manifestVersion: 1
 id: polarr-app
 category: media
 name: Polarr
-version: "0.6.38"
+version: "0.6.39"
 tagline: Discover, request, and stream your homeserver music
 icon: https://raw.githubusercontent.com/KevinGuest/polarr-app/main/polarr-app/icon.png
 port: 3647
@@ -35,11 +35,12 @@ description: >-
   Polarr does not ship Lidarr itself; install Lidarr from the Umbrel App Store
   first if you want automated *arr-style acquisition.
 releaseNotes: |-
-  - **Profile photo** — the large avatar loads instead of falling back to a letter
-  - **Fresh profiles** — account details always refresh instead of showing a cached copy
-  - **iOS Now Playing** — Lock Screen and Dynamic Island show the track and cover art
-  - **iOS artwork** — remote cover images load reliably in the iPhone app
-  - **Desktop app** — updated to v0.2.18 with the same profile photo fix
+  - **Instant library search** — catalog metadata caches on-device for Spotify-style typeahead
+  - **Faster Connect** — pause, skip, and volume sync across devices in near real time
+  - **Player covers & volume** — Lock Screen art and hardware volume stay in sync on iOS
+  - **Smarter auto-queue** — radio stays on the album longer and skips recent repeats
+  - **Desktop app** — updated to v0.2.19 with the same client improvements
+
 developer: Kevin Guest
 website: https://github.com/KevinGuest/polarr-app
 submitter: KevinGuest
