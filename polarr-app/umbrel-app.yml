@@ -39,7 +39,7 @@ releaseNotes: |-
   - **Faster Connect** — pause, skip, and volume sync across devices in near real time
   - **Player covers & volume** — Lock Screen art and hardware volume stay in sync on iOS
   - **Smarter auto-queue** — radio stays on the album longer and skips recent repeats
-  - **Desktop app** — updated to v0.2.19 with the same client improvements
+  - **Desktop app** — updated to v0.2.20 with the same client improvements
 
 developer: Kevin Guest
 website: https://github.com/KevinGuest/polarr-app
