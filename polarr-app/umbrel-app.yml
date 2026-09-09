@@ -2,7 +2,7 @@ manifestVersion: 1
 id: polarr-app
 category: media
 name: Polarr
-version: "0.6.40"
+version: "0.6.41"
 tagline: Discover, request, and stream your homeserver music
 icon: https://raw.githubusercontent.com/KevinGuest/polarr-app/main/polarr-app/icon.png
 port: 3647
@@ -35,12 +35,10 @@ description: >-
   Polarr does not ship Lidarr itself; install Lidarr from the Umbrel App Store
   first if you want automated *arr-style acquisition.
 releaseNotes: |-
-  - **Faster YouTube playback** — cold-start streams resolve in one shot instead of a long search ladder
-  - **Smarter library matching** — download filenames become real titles; collab tracks play from disk
-  - **Taste autoplay** — radio prefers artists you actually listen to, with a small novelty slice
-  - **Player covers** — expanded player / Lock Screen / Dynamic Island art fixed (iOS build 640)
-  - **Security harden** — tighter API auth, playlist import allowlist, safer music path serving
-  - **Desktop app** — updated to v0.2.22 (Windows volume mixer shows as Polarr)
+  - **Import by link** — paste a public Spotify playlist/album, YouTube Music, or Deezer URL from Account → Playlists (no admin Client ID)
+  - **Import UI** — brand logos, mobile-friendly picker
+  - **Connect → phone** — desktop/web handoff drives native iOS AVPlayer (TestFlight 643)
+  - **Settings** — profile menu says Settings
 
 developer: Kevin Guest
 website: https://github.com/KevinGuest/polarr-app
