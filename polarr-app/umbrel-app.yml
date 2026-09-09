@@ -40,7 +40,7 @@ releaseNotes: |-
   - **Taste autoplay** — radio prefers artists you actually listen to, with a small novelty slice
   - **Player covers** — expanded player / Lock Screen / Dynamic Island art fixed (iOS build 640)
   - **Security harden** — tighter API auth, playlist import allowlist, safer music path serving
-  - **Desktop app** — updated to v0.2.21 (Windows volume mixer shows as Polarr)
+  - **Desktop app** — updated to v0.2.22 (Windows volume mixer shows as Polarr)
 
 developer: Kevin Guest
 website: https://github.com/KevinGuest/polarr-app
