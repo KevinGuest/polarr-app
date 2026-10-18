@@ -2,7 +2,7 @@ manifestVersion: 1
 id: polarr-app
 category: media
 name: Polarr
-version: "0.6.46"
+version: "0.6.47"
 tagline: Discover, request, and stream your homeserver music
 icon: https://raw.githubusercontent.com/KevinGuest/polarr-app/main/polarr-app/icon.png
 port: 3647
@@ -35,10 +35,9 @@ description: >-
   Polarr does not ship Lidarr itself; install Lidarr from the Umbrel App Store
   first if you want automated *arr-style acquisition.
 releaseNotes: |-
-  - **Instant play** — library tracks start on click; the first 15 s of songs on screen, next in queue, and your liked/recent tracks are kept on-device
-  - **AAC sidecars** — FLAC/WAV are pre-encoded to AAC 256k in the background (stored in app data) so playback and iPhone no longer wait on ffmpeg
-  - **Streaming quality** — the High/Standard/Compact setting now applies on web and desktop too; Lossless streams the original
-  - **Desktop** — v0.2.27 bundles the latest UI (macOS + Windows)
+  - **Library prune** — scans drop tracks Lidarr (or disk) already deleted, so the library count matches what’s actually on disk
+  - **Instant play** — library tracks start on click; AAC sidecars and on-device heads still apply from 0.6.46
+  - **Desktop** — v0.2.27 still bundles the latest UI (macOS + Windows)
 developer: Kevin Guest
 website: https://github.com/KevinGuest/polarr-app
 submitter: KevinGuest
