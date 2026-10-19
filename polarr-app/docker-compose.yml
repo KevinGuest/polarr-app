@@ -10,7 +10,7 @@ services:
       PROXY_AUTH_ADD: "false"
 
   web:
-    # Digest pinned after GHCR publish — bump tag, digest, and POLARR_APP_VERSION on release.
+    # After the v* image build, commit the tag and @sha256 digest together (and POLARR_APP_VERSION).
     image: ghcr.io/kevinguest/polarr-app:0.6.47@sha256:314958143885b783dd9511714f534acfce48ebf5cdb4006c78c4d1386a2f4694
     user: "1000:1000"
     init: true

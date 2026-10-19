@@ -32,16 +32,21 @@ Lidarr downloads to `/downloads/music` which is host `${UMBREL_ROOT}/data/storag
 
 ## Version bump checklist
 
-When shipping a new Umbrel package release, update **all** of:
+When shipping a new Umbrel package release:
 
-1. `polarr-app/umbrel-app.yml` → `version` + `releaseNotes`
-2. `polarr-app/docker-compose.yml` → `POLARR_APP_VERSION` (must match manifest `version`)
-3. `polarr-app/docker-compose.yml` → `web` image **tag and `@sha256:` digest**
-   - Resolve digest: `docker buildx imagetools inspect ghcr.io/kevinguest/polarr-app:<tag>`
-4. Publish the image from this repo’s `Docker image` workflow (builds source from `KevinGuest/polarr`)
+1. Push a `v*` tag. The `Docker image` workflow builds source from `KevinGuest/polarr` at that tag and publishes `ghcr.io/kevinguest/polarr-app:<version>`. `:latest` moves only on these tags.
+2. Wait for that workflow run to finish so the image tag exists on GHCR.
+3. Commit the image tag and `@sha256:` digest together (they are not known as a pair until step 2):
+   - `polarr-app/docker-compose.yml` → `web` image **tag and `@sha256:` digest**
+     - Resolve digest: `docker buildx imagetools inspect ghcr.io/kevinguest/polarr-app:<tag>`
+   - `polarr-app/docker-compose.yml` → `POLARR_APP_VERSION` (must match manifest `version`)
+   - `polarr-app/umbrel-app.yml` → `version` + `releaseNotes`
+
+PRs and pushes that touch `polarr-app/docker-compose.yml` look the tag up on GHCR anonymously and fail if the `@sha256` pin does not match. Committing the digest before step 2 pins a digest that does not exist yet.
 
 ## Dev notes
 
 - App package lives in `polarr-app/` (Umbrel community store layout).
 - Store root: `umbrel-app-store.yml`
 - GHCR workflow: `.github/workflows/docker.yml`
+- Compose digest check: `.github/workflows/compose-digest.yml`
