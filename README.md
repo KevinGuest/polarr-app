@@ -34,15 +34,16 @@ Lidarr downloads to `/downloads/music` which is host `${UMBREL_ROOT}/data/storag
 
 When shipping a new Umbrel package release:
 
-1. Push a `v*` tag. The `Docker image` workflow builds source from `KevinGuest/polarr` at that tag and publishes `ghcr.io/kevinguest/polarr-app:<version>`. `:latest` moves only on these tags.
-2. Wait for that workflow run to finish so the image tag exists on GHCR.
-3. Commit the image tag and `@sha256:` digest together (they are not known as a pair until step 2):
+1. Tag [`KevinGuest/polarr`](https://github.com/KevinGuest/polarr) first (`v*`). The image workflow checks that tag out of `KevinGuest/polarr`.
+2. Push the same `v*` tag on this repo. The workflow publishes `ghcr.io/kevinguest/polarr-app:<version>`. `:latest` moves only on these tags.
+3. Wait for that workflow run to finish so the image tag exists on GHCR.
+4. Commit the image tag and `@sha256:` digest together (they are not known as a pair until step 3):
    - `polarr-app/docker-compose.yml` → `web` image **tag and `@sha256:` digest**
      - Resolve digest: `docker buildx imagetools inspect ghcr.io/kevinguest/polarr-app:<tag>`
    - `polarr-app/docker-compose.yml` → `POLARR_APP_VERSION` (must match manifest `version`)
    - `polarr-app/umbrel-app.yml` → `version` + `releaseNotes`
 
-PRs and pushes that touch `polarr-app/docker-compose.yml` look the tag up on GHCR anonymously and fail if the `@sha256` pin does not match. Committing the digest before step 2 pins a digest that does not exist yet.
+PRs and pushes that change `polarr-app/docker-compose.yml`, the digest check script, or its workflow look the tag up on GHCR anonymously and fail if the `@sha256` pin does not match. The same check runs weekly. Committing the digest before step 3 pins a digest that does not exist yet.
 
 ## Dev notes
 

@@ -5,6 +5,12 @@ on:
     branches: [main, master]
     tags: ["v*"]
   pull_request:
+    # Docs-only PRs (README and other Markdown) do not build an image.
+    # Push, tag, and manual runs stay unfiltered.
+    paths-ignore:
+      - "README.md"
+      - "*.md"
+      - "**/*.md"
   workflow_dispatch:
   repository_dispatch:
     types: [polarr-release]

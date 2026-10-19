@@ -4,9 +4,16 @@ on:
   pull_request:
     paths:
       - polarr-app/docker-compose.yml
+      - .github/scripts/check-compose-digest.sh
+      - .github/workflows/compose-digest.yml
   push:
     paths:
       - polarr-app/docker-compose.yml
+      - .github/scripts/check-compose-digest.sh
+      - .github/workflows/compose-digest.yml
+  schedule:
+    # Weekly, so a pin that drifts after publish is caught without a compose edit.
+    - cron: "0 12 * * 1"
 
 # Read-only. The check talks to GHCR anonymously and does not push.
 permissions: {}
