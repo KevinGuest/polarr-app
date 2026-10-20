@@ -4,11 +4,20 @@ on:
   push:
     branches: [main, master]
     tags: ["v*"]
+  pull_request:
+    # Docs-only PRs (README and other Markdown) do not build an image.
+    # Push, tag, and manual runs stay unfiltered.
+    paths-ignore:
+      - "README.md"
+      - "*.md"
+      - "**/*.md"
   workflow_dispatch:
   repository_dispatch:
     types: [polarr-release]
 
-# Deny everything by default; the build job grants only what it needs.
+# Deny everything by default; each job grants only what it needs.
+# Pull requests run build-pr (contents: read). Publishes run build
+# (contents: read, packages: write).
 permissions: {}
 
 # One build per ref at a time. Don't cancel: a half-finished push can leave
@@ -23,11 +32,12 @@ env:
 
 jobs:
   build:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-    steps:
+    steps: &build_steps
       - name: Checkout polarr-app
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
@@ -50,7 +60,9 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
 
+      # Pull requests have no packages: write and must not authenticate to GHCR.
       - name: Log in to GHCR
+        if: github.event_name != 'pull_request'
         uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
         with:
           registry: ${{ env.REGISTRY }}
@@ -72,21 +84,34 @@ jobs:
             type=sha,prefix=sha-
             type=raw,value=latest,enable=${{ startsWith(github.ref, 'refs/tags/v') }}
 
-      - name: Build and push
+      - name: Build image
         uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: ./app
           file: ./app/Dockerfile
           # First ship: amd64 (fast). Add arm64 once green.
           platforms: linux/amd64
-          push: true
+          # Pull requests build locally and do not push.
+          push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           # Branch and tag builds write separate cache scopes so they stop
           # racing on one save. Tag builds also read the branch cache.
+          # On a branch run ref_type is already "branch", so the second
+          # scope is omitted there (it would repeat polarr-app-branch).
+          # Pull requests read the branch cache and do not write one.
           cache-from: |
             type=gha,scope=polarr-app-${{ github.ref_type }}
-            type=gha,scope=polarr-app-branch
-          cache-to: type=gha,mode=max,scope=polarr-app-${{ github.ref_type }}
+            ${{ github.ref_type == 'tag' && 'type=gha,scope=polarr-app-branch' || '' }}
+          cache-to: ${{ github.event_name != 'pull_request' && format('type=gha,mode=max,scope=polarr-app-{0}', github.ref_type) || '' }}
           provenance: false
           sbom: false
+
+  # Same steps as build. This job exists so pull_request runs do not receive
+  # packages: write; GitHub permissions cannot be conditional inside one job.
+  build-pr:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps: *build_steps

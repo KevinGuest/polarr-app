@@ -1,0 +1,33 @@
+name: Compose image digest
+
+on:
+  pull_request:
+    paths:
+      - polarr-app/docker-compose.yml
+      - .github/scripts/check-compose-digest.sh
+      - .github/workflows/compose-digest.yml
+  push:
+    paths:
+      - polarr-app/docker-compose.yml
+      - .github/scripts/check-compose-digest.sh
+      - .github/workflows/compose-digest.yml
+  schedule:
+    # Weekly, so a pin that drifts after publish is caught without a compose edit.
+    - cron: "0 12 * * 1"
+
+# Read-only. The check talks to GHCR anonymously and does not push.
+permissions: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout polarr-app
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+
+      - name: Check pinned digest against GHCR
+        run: .github/scripts/check-compose-digest.sh polarr-app/docker-compose.yml
