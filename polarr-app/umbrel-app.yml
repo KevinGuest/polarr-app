@@ -2,7 +2,7 @@ manifestVersion: 1
 id: polarr-app
 category: media
 name: Polarr
-version: "0.6.49"
+version: "0.6.50"
 tagline: Discover, request, and stream your homeserver music
 icon: https://raw.githubusercontent.com/KevinGuest/polarr-app/main/polarr-app/icon.png
 port: 3647
@@ -35,9 +35,10 @@ description: >-
   Polarr does not ship Lidarr itself; install Lidarr from the Umbrel App Store
   first if you want automated *arr-style acquisition.
 releaseNotes: |-
-  - **Audit log** — sign-ins, failed logins, role and access changes, bans, invites and settings changes are now recorded (admins: /api/admin/audit)
-  - **Security hardening** — media tickets only unlock media, settings writes are admin-only, private playlist covers stay private
-  - **Faster** — home, sidebar and playback fixes from 0.6.48
+  - **Much faster on large libraries** — album pages, search, play and the library no longer scan every track on each request
+  - **Clean album links** — /album/artist/title instead of a long token; old links still work
+  - **Search** — titles with apostrophes are found through the fast index
+  - **Desktop** — v0.2.30 bundles the latest UI (macOS + Windows)
 developer: Kevin Guest
 website: https://github.com/KevinGuest/polarr-app
 submitter: KevinGuest
