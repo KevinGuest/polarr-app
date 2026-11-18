@@ -11,7 +11,7 @@ services:
 
   web:
     # After the v* image build, commit the tag and @sha256 digest together (and POLARR_APP_VERSION).
-    image: ghcr.io/kevinguest/polarr-app:0.6.48@sha256:836cbc9b93ad34cee5faaab9a9975ab097dd0d1247d00e1f26cbe10b4811efca
+    image: ghcr.io/kevinguest/polarr-app:0.6.49@sha256:b11746db15716022ee4e7086a33579332e8fe8cc890f91471454e1a9b5b6b645
     user: "1000:1000"
     init: true
     restart: on-failure
@@ -23,7 +23,7 @@ services:
       - POLARR_DOWNLOADS_DIR=/music/downloads
       - PORT=3000
       - HOSTNAME=0.0.0.0
-      - POLARR_APP_VERSION=0.6.48
+      - POLARR_APP_VERSION=0.6.49
     volumes:
       - ${APP_DATA_DIR}/data:/data
       # Full Umbrel downloads tree so File Browser can open real Lidarr/SABnzbd
